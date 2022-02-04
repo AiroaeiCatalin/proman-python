@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ProMan</title>
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicon/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+        <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    </head>
+    <body>
+        <h1>ProMan</h1>
+        <div id="buttons-misc">
+            <button id="create-new-board">Create new board</button>
+            <button id="save-board">Save board</button>
+            <button id="save-board-name">Save titles</button>
+            <button id="register"><a href="{{ url_for('register_page') }}">Register</a></button>
+            {% if user['user'] is not defined %}
+                <button id="login"><a href="{{ url_for('login_page') }}">Login</a></button>
+            {% endif %}
+            {% if user['user'] is defined %}
+                <button id="logout"><a href="{{ url_for('logout_page') }}">Logout</a></button>
+                <button id="add-private-board">Create private board</button>
+                <button id="save-private-board">Save private board</button>
+            {% endif %}
+        </div>
+        <p id="board-input"></p>
+        <p id="private-board-input"></p>
+        <div id="boards"></div>
+    </body>
+</html>
